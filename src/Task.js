@@ -16,24 +16,32 @@ const Task = ({ taskObj, onComplete }) => {
       : formatDistanceToNow(teslimTarihi, { addSuffix: true });
 
   return (
-    <div className="task">
-      <h3>{taskObj.title}</h3>
+    <div className="px-5 py-5 bg-white rounded leading-6 mt-16 shadow-md">
+      <h3 className="text-lg text-amber-500 mb-5">{taskObj.title}</h3>
       <div>
         son teslim:{" "}
-        <span className="deadline" style={deadlineStyle}>
+        <span className="text-xs pt-4 " style={deadlineStyle}>
           {ayarlama}
         </span>
       </div>
-      <p>{taskObj.description}</p>
+      <p className="text-sm py-3 text-indigo-900">{taskObj.description}</p>
       <div>
         {taskObj.people.map((p) => (
-          <span className="pill" key={p}>
+          <span
+            className="inline-block p-2 text-sm border border-black mr-4 mb-6 rounded-3xl"
+            key={p}
+          >
             {p}
           </span>
         ))}
       </div>
       {onComplete && (
-        <button onClick={() => onComplete(taskObj.id)}>Tamamlandı</button>
+        <button
+          className="p-2 block ml-auto bg-amber-500 shadow-md rounded cursor-pointer"
+          onClick={() => onComplete(taskObj.id)}
+        >
+          Tamamlandı
+        </button>
       )}
     </div>
   );
