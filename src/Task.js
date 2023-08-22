@@ -6,7 +6,6 @@ const Task = ({ taskObj, onComplete }) => {
   const bugun = new Date();
   const fark = differenceInDays(teslimTarihi, bugun);
 
-  // Deadline rengi için stil nesnesi oluştur
   const deadlineStyle = {
     backgroundColor: fark <= 3 ? "#ffd9d4" : "#f0abfc",
   };
