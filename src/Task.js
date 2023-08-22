@@ -3,10 +3,13 @@ import { formatDistanceToNow, differenceInDays } from "date-fns";
 
 const Task = ({ taskObj, onComplete }) => {
   const teslimTarihi = new Date(taskObj.deadline);
-
   const bugun = new Date();
-
   const fark = differenceInDays(teslimTarihi, bugun);
+
+  // Deadline rengi için stil nesnesi oluştur
+  const deadlineStyle = {
+    backgroundColor: fark <= 3 ? "#ffd9d4" : "#f0abfc",
+  };
 
   const ayarlama =
     fark > 0
@@ -16,8 +19,11 @@ const Task = ({ taskObj, onComplete }) => {
   return (
     <div className="task">
       <h3>{taskObj.title}</h3>
-      <div className={`deadline ${fark <= 1 ? "urgent" : ""}`}>
-        son teslim: <span>{ayarlama}</span>
+      <div>
+        son teslim:{" "}
+        <span className="deadline" style={deadlineStyle}>
+          {ayarlama}
+        </span>
       </div>
       <p>{taskObj.description}</p>
       <div>
